@@ -25,29 +25,36 @@ public class MyCountMap<K> implements CountMap<K, Integer> {
     }
 
     @Override
-    public void addAll(CountMap<K, Integer> m2) {
+    public int getCount(K key) {
 
-    }
-
-/*
-    @Override
-    public void addAll(CountMap<K, Number> m2) {
-        map.putAll(m2.asMap());
-    }
-*/
-
-    @Override
-    public int count(K key) {
         return map.get(key);
     }
 
     @Override
-    public Map<K, Integer> asMap() {
+    public int remove(K key) {
+
+        return 0;
+    }
+
+    @Override
+    public int size() {
+
+        return 0;
+    }
+
+    @Override
+    public void addAll(CountMap<K, Integer> m2) {
+
+    }
+
+    @Override
+    public Map toMap() {
+
         return map;
     }
 
     @Override
-    public void copyTo(Map map) {
+    public void toMap(Map destination) {
 
     }
 }
