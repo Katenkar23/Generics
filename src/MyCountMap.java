@@ -1,25 +1,25 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class MyCountMap<K> implements CountMap<K, Integer> {
+public class MyCountMap<K, Integer> implements CountMap<K, Integer> {
 
-    private final Map<K, Integer> map;
+    private final Map<K, java.lang.Integer> map;
 
-    public MyCountMap(Map<K, Integer> map) {
+    public MyCountMap(Map<K, java.lang.Integer> map) {
 
         this.map = map;
     }
 
     public MyCountMap() {
 
-        this.map = new HashMap<K, Integer>();
+        this.map = new HashMap<>();
     }
 
     @Override
     public void add(K key) {
 
         if (map.containsKey(key))
-            map.put(key, (map.get(key) + 1));
+            map.put(key, map.get(key) + 1);
         else
             map.put(key, 1);
     }
@@ -33,18 +33,19 @@ public class MyCountMap<K> implements CountMap<K, Integer> {
     @Override
     public int remove(K key) {
 
-        return 0;
+        return map.remove(key);
     }
 
     @Override
     public int size() {
 
-        return 0;
+        return map.size();
     }
 
     @Override
     public void addAll(CountMap<K, Integer> m2) {
 
+        map.putAll((Map<? extends K, ? extends java.lang.Integer>) m2);
     }
 
     @Override
@@ -55,6 +56,12 @@ public class MyCountMap<K> implements CountMap<K, Integer> {
 
     @Override
     public void toMap(Map destination) {
+
+        destination.clear();
+        destination.putAll(map);
+    }
+
+    public static void main(String[] args) {
 
     }
 }
